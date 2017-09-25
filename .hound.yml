@@ -1,0 +1,31 @@
+---
+# Too picky.
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+# This should truly be on for well documented gems.
+Style/Documentation:
+  Enabled: false
+
+# Neatly aligned code is too swell.
+Style/SpaceBeforeFirstArg.:
+  Enabled: false
+
+# Don't mess with RSpec DSL.
+Style/Blocks:
+  Exclude:
+    - 'spec/**/*'
+
+# Skip this.
+Style/StringLiterals:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+# Avoid contradictory style rules by enforce single quotes.
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

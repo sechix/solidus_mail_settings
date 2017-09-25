@@ -1,0 +1,81 @@
+<div data-hook="admin_mail_method_form_fields">
+  <div class="row">
+
+    <div class="col-md-6" data-hook="general">
+      <fieldset>
+        <legend><%= Spree.t(:general) %></legend>
+
+        <div class="form-group">
+          <div class="inline-radio">
+            <%= label_tag :enable_mail_delivery do %>
+              <%= preference_field_tag(:enable_mail_delivery, Spree::Rentals::Config[:enable_mail_delivery], type: :boolean) %>
+              <%= Spree.t(:enable_mail_delivery) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :mails_from, Spree.t(:send_mails_as) %>
+          <%= text_field_tag :mails_from, Spree::Rentals::Config[:mails_from], maxlength: 256, class: 'form-control' %>
+          <span class="info">
+            <%= Spree.t(:smtp_send_all_emails_as_from_following_address) %>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :mail_bcc, Spree.t(:send_copy_of_all_mails_to) %>
+          <%= text_field_tag :mail_bcc, Spree::Rentals::Config[:mail_bcc], maxlength: 256, class: 'form-control' %>
+          <span class="info">
+            <%= Spree.t(:smtp_send_copy_to_this_addresses) %>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :intercept_email, Spree.t(:intercept_email_address) %>
+          <%= text_field_tag :intercept_email, Spree::Rentals::Config[:intercept_email], maxlength: 256, class: 'form-control' %>
+          <span class="info">
+            <%= Spree.t(:intercept_email_instructions) %>
+          </span>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="col-md-6" data-hook="smtp">
+      <fieldset>
+        <legend><%= Spree.t(:smtp) %></legend>
+        <div class="form-group">
+          <%= label_tag :mail_domain, Spree.t(:smtp_domain) %>
+          <%= text_field_tag :mail_domain, Spree::Rentals::Config[:mail_domain], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :mail_host, Spree.t(:smtp_mail_host) %>
+          <%= text_field_tag :mail_host, Spree::Rentals::Config[:mail_host], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :mail_port, Spree.t(:smtp_port) %>
+          <%= text_field_tag :mail_port, Spree::Rentals::Config[:mail_port], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :secure_connection_type, Spree.t(:secure_connection_type) %>
+          <%= select_tag(:secure_connection_type,
+                         options_from_collection_for_select(Spree::Core::MailSettings::SECURE_CONNECTION_TYPES, :to_s, :to_s, Spree::Rentals::Config[:secure_connection_type]),
+                         class: 'select2') %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :mail_auth_type, Spree.t(:smtp_authentication_type) %>
+          <%= select_tag(:mail_auth_type,
+                         options_from_collection_for_select(Spree::Core::MailSettings::MAIL_AUTH, :to_s, :to_s, Spree::Rentals::Config[:mail_auth_type]),
+                         class: 'select2') %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :smtp_username, Spree.t(:smtp_username) %>
+          <%= text_field_tag :smtp_username, Spree::Rentals::Config[:smtp_username], class: 'form-control', autocomplete: 'off' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :preferred_smtp_password, Spree.t(:smtp_password) %>
+          <%= password_field_tag :smtp_password, Spree::Rentals::Config[:smtp_password], class: 'form-control', autocomplete: 'off' %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

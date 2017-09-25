@@ -1,0 +1,6 @@
+require 'solidus_core'
+require 'spree/core/mail_interceptor'
+require 'spree/core/mail_method'
+require 'spree/core/mail_settings'
+require 'solidus_mail_settings/engine'
+require 'solidus_mail_settings/version'
